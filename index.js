@@ -1,54 +1,10 @@
-// function capitalize(word){
-//     word = word.toLowerCase().split('');
-//     let first = word[0].toUpperCase();
-//     let final = word.join('').replace(word[0], first);
-//     return final;
-// }
-
-// capitalize('fart');
-// console.log("TCL: capitalize('fart');", capitalize('fart'));
-
-// function lastLetter(input){
-//     input = input.split('');
-//     for (let i = 0; i < input.length; i++) {
-//         if (i === input.length - 1) {
-//             return input[i];
-//         }
-//     }
-// }
-
-// console.log("TCL: lastLetter('abcd');", lastLetter('abcd'));
-// lastLetter('abcd');
-
-
 // ROCK, PAPER, SCISSORS PROJECT
 
 function game() {
 
-    let playerScore = 0;
-    let computerScore = 0;
-    let winCounter = 0;
-    let computerSelection = Math.floor(Math.random() * 3);
-    let playerSelection = prompt('Choose: rock, paper, or scissors').toLowerCase();
-
-
-
-    function computer() {
-        // console.log(computerSelection);
-        switch (computerSelection) {
-            case 0:
-                return 0;
-            case 1:
-                return 1;
-            case 2:
-                return 2;
-            default:
-                console.log('Something went wrong. Try again.');
-        }
-    }
-
     function player() {
-        // console.log(playerSelection);
+        let playerSelection = prompt('Choose: rock, paper, or scissors').toLowerCase()
+
         switch (playerSelection) {
             case 'rock':
                 return 0;
@@ -61,33 +17,67 @@ function game() {
         }
     }
 
+    // returns:
+    //    1 if player wins
+    //    -1 if player loses (computer wins)
+    //    0 if tie
     function playRound(computer, player) {
         if (computer === 0 && player === 1) {
             console.log('You win! Paper beats rock.');
-            playerScore++;
-            winCounter++;
-            console.log("TCL: game -> winCounter", winCounter)
-            console.log(playerScore);
+            return 1;
         } else if (computer === 0 && player === 2) {
-            console.log('You lose! Rock beats scissors!');
-            computerScore++;
-            winCounter++;
-            console.log("TCL: game -> winCounter", winCounter)
-            console.log(computerScore);
+            console.log('You lose! Rock beats scissors.');
+            return -1;
         } else if (computer === 1 && player === 0) {
-            console.log('You lose! Paper beats rock!');
-            computerScore++;
-            winCounter++;
-            console.log("TCL: game -> winCounter", winCounter)
+            console.log('You lose! Paper beats rock.');
+            return -1;
         } else if (computer === 1 && player === 2) {
-            console.log('You win! Scissors beats paper!');
-            playerScore++;
-            winCounter++;
-            console.log("TCL: game -> winCounter", winCounter)
-        } else console.log('Tie. Try again.');
+            console.log('You win! Scissors beats paper.');
+            return 1;
+        } else if (computer === 2 && player === 0) {
+            console.log('You win! Rock beats scissors.');
+            return 1;
+        } else if (computer === 2 && player === 1) {
+            console.log('You lose! Scissors beats paper.');
+            return -1;
+        } else if (player !== 0 && player !== 1 && player !== 2) {
+            console.log('Type your selection carefully.');
+            return 0;
+        } else {
+            console.log('Tie! Try again.');
+            return 0;
+        }
     }
-    playRound();
-}
 
+    // set up variables to start all rounds
+    let winCounter = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    while (playerScore < 3 && computerScore < 3) {
+        // computer's turn
+        let computerSelection = Math.floor(Math.random() * 3);
+
+        // player's turn
+        let playerInputNum = player();
+
+        let result = playRound(computerSelection, playerInputNum);
+
+        switch (result) {
+            case 1:
+                playerScore++;
+                winCounter++;
+                break;
+            case -1:
+                computerScore++;
+                winCounter++;
+                break;
+        }
+    }
+
+    console.log('Game completed!');
+    console.log('Player got: ' + playerScore);
+    console.log('Computer got: ' + computerScore);
+}
 
 game();
