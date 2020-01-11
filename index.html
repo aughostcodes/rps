@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TOP Exercises</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TOP Exercises: R, P, S</title>
 </head>
 <body>
+    <div class="main-container">
+
+        <h1>Rock, Paper, Scissors</h1>
+
+        <div class="best-of-text">
+            <h3>Best of <span><input class="best-of-input" value="5" /></span> wins the game!</h3>
+            <p>Enter an odd number of rounds to play.</p>
+        </div>
+
+        <div class="images">
+            <div class="icon rock"><i class="far fa-hand-rock"></i></div>
+            <div class="icon paper"><i class="far fa-hand-paper"></i></div>
+            <div class="icon scissors"><i class="far fa-hand-scissors"></i></div>
+        </div>
+
+        <div class="selection-text">
+            <p>You selected <span>___</span>.</p>
+            <p>Computer selected <span>___</span>.</p>
+        </div>
+        <div class="won-lost">
+            <p>You <span>___</span> this round.</p>
+        </div>
+
+        <div class="counters">
+            <div class="counter player">Player: 3</div>
+            <div class="counter computer">Computer: 2</div>
+            <div class="counter tie">Ties: 0</div>
+        </div>
+
+        <div class="game-over hidden">
+            <p>Game over! You ___!</p>
+        </div>
+
+    </div>
+
+
     <script src="index.js"></script>
 </body>
 </html>
