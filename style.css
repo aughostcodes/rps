@@ -61,6 +61,11 @@
     align-items: center;
 }
 
+.counter-span {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
 .hidden {
     display: none;
 }
