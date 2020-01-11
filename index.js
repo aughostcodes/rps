@@ -23,8 +23,6 @@
 
 // ROCK, PAPER, SCISSORS PROJECT
 
-
-
 function game() {
 
     let playerScore = 0;
@@ -33,65 +31,63 @@ function game() {
     let computerSelection = Math.floor(Math.random() * 3);
     let playerSelection = prompt('Choose: rock, paper, or scissors').toLowerCase();
 
+
+
     function computer() {
+        // console.log(computerSelection);
         switch (computerSelection) {
             case 0:
                 return 0;
-                break;
             case 1:
                 return 1;
-                break;
             case 2:
                 return 2;
-                break;
             default:
                 console.log('Something went wrong. Try again.');
         }
     }
 
     function player() {
+        // console.log(playerSelection);
         switch (playerSelection) {
             case 'rock':
                 return 0;
-                break;
             case 'paper':
                 return 1;
-                break;
             case 'scissors':
                 return 2;
-                break;
             default:
                 console.log('Must pick rock, paper, or scissors to play!');
         }
     }
 
     function playRound(computer, player) {
-        while (winCounter < 4) {
-
-
-            if (computerSelection === playerSelection) {
-                console.log('Tie. Try again.');
-            } else if (computerSelection === 0 && playerSelection === 1) {
-                console.log('You win! Paper beats rock.');
-                playerScore++;
-                console.log(playerScore);
-            } else if (computerSelection === 0 && playerSelection === 2) {
-                console.log('You lose! Rock beats scissors!');
-                computerScore++;
-                console.log(computerScore);
-            } else if (computerSelection === 1 && playerSelection === 0) {
-                console.log('You lose! Paper beats rock!');
-                computerScore++;
-            } else if (computerSelection === 1 && playerSelection === 2) {
-                console.log('You win! Scissors beats paper!');
-            }
-
-
-        }
+        if (computer === 0 && player === 1) {
+            console.log('You win! Paper beats rock.');
+            playerScore++;
+            winCounter++;
+            console.log("TCL: game -> winCounter", winCounter)
+            console.log(playerScore);
+        } else if (computer === 0 && player === 2) {
+            console.log('You lose! Rock beats scissors!');
+            computerScore++;
+            winCounter++;
+            console.log("TCL: game -> winCounter", winCounter)
+            console.log(computerScore);
+        } else if (computer === 1 && player === 0) {
+            console.log('You lose! Paper beats rock!');
+            computerScore++;
+            winCounter++;
+            console.log("TCL: game -> winCounter", winCounter)
+        } else if (computer === 1 && player === 2) {
+            console.log('You win! Scissors beats paper!');
+            playerScore++;
+            winCounter++;
+            console.log("TCL: game -> winCounter", winCounter)
+        } else console.log('Tie. Try again.');
     }
-
-
-
+    playRound();
 }
+
 
 game();
