@@ -66,6 +66,10 @@
     margin-top: 0.5rem;
 }
 
+.game-over {
+    margin-top: 2rem;
+}
+
 .hidden {
     display: none;
 }

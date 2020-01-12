@@ -1,5 +1,6 @@
 // ROCK, PAPER, SCISSORS PROJECT
 
+// all the variables
 let options = ['rock', 'paper', 'scissors'];
 let rock = document.querySelector('.rock');
 let paper = document.querySelector('.paper');
@@ -13,6 +14,7 @@ let playerWinCounter = document.querySelector('.player-counter');
 let computerWinCounter = document.querySelector('.computer-counter');
 let tieCounter = document.querySelector('.tie-counter');
 let gameOver = document.querySelector('.game-over');
+let finalResult = document.querySelector('.final-result');
 
 
 
@@ -21,15 +23,15 @@ bestOfInput.addEventListener('change', function () {
     if (bestOfInput.value % 2 === 0) {
         console.log('Please select an odd number for the game.')
     }
-    console.log(bestOfInput.value);
 });
 
+// listeners for image click/selection
 rock.addEventListener('click', function () {
     playerChoiceSpan.innerText = 'rock';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
-
+    gameIsOver();
 });
 
 paper.addEventListener('click', function () {
@@ -37,6 +39,7 @@ paper.addEventListener('click', function () {
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
+    gameIsOver();
 });
 
 scissors.addEventListener('click', function () {
@@ -44,21 +47,10 @@ scissors.addEventListener('click', function () {
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
+    gameIsOver();
 });
 
-
-
-
-
-function gameIsOver() {
-    if ((Number(playerWinCounter.innerText) + Number(computerWinCounter.innerText)) === Number(bestOfInput.value)) {
-        console.log('GAME HAS COMPLETED')
-    }
-}
-gameIsOver();
-
-
-
+// logic stuff
 function computerSelection() {
     return Math.floor(Math.random() * 3);
 }
@@ -92,8 +84,21 @@ function countRounds() {
     }
 }
 
+function gameIsOver() {
+    if (Number(playerWinCounter.innerText) === Math.ceil(Number(bestOfInput.value) / 2) || Number(computerWinCounter.innerText) === Math.ceil(Number(bestOfInput.value) / 2)) {
+        if (Number(playerWinCounter.innerText) > Number(computerWinCounter.innerText)) {
+            finalResult.innerText = 'won. Well done';
+        } else if (Number(computerWinCounter.innerText) > Number(playerWinCounter.innerText)) {
+            finalResult.innerText = 'lost. Try again';
+        }
+        gameOver.classList.remove('hidden');
+    }
+}
 
 
+
+
+// to run in console only:
 
 // function game() {
 
