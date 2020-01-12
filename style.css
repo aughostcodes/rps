@@ -26,8 +26,10 @@ h1 {
 }
 
 .best-of-input {
-    width: 2rem;
-    border: rgb(255,181,43) solid;
+    width: 2.5rem;
+    border: rgb(255,181,43) solid 3px;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
 }
 
 .images {
@@ -88,6 +90,9 @@ h1 {
     align-items: center;
     margin-top: 2rem;
     cursor: pointer;
+    border: 5px rgb(255,181,43) solid;
+    border-radius: 1rem;
+    padding: 1rem;
 }
 
 .hidden {

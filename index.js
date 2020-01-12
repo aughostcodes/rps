@@ -24,29 +24,33 @@ bestOfInput.addEventListener('change', function () {
     }
 });
 
-rock.addEventListener('click', function () {
+rock.addEventListener('click', positiveRockEvent);
+paper.addEventListener('click', positivePaperEvent);
+scissors.addEventListener('click', positiveScissorsEvent);
+
+function positiveRockEvent() {
     playerChoiceSpan.innerText = 'rock';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
     gameIsOver();
-});
+};
 
-paper.addEventListener('click', function () {
+function positivePaperEvent() {
     playerChoiceSpan.innerText = 'paper';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
     gameIsOver();
-});
+};
 
-scissors.addEventListener('click', function () {
+function positiveScissorsEvent() {
     playerChoiceSpan.innerText = 'scissors';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
     determineWinner();
     gameIsOver();
-});
+};
 
 function computerSelection() {
     return Math.floor(Math.random() * 3);
@@ -89,9 +93,12 @@ function gameIsOver() {
             finalResult.innerText = 'lost. Try again';
         }
         gameOver.classList.remove('hidden');
-        gameOver.addEventListener('click', function (){
+        gameOver.addEventListener('click', function () {
             reset();
         })
+        rock.removeEventListener('click', positiveRockEvent);
+        paper.removeEventListener('click', positivePaperEvent);
+        scissors.removeEventListener('click', positiveScissorsEvent);
     }
 }
 
@@ -103,6 +110,9 @@ function reset() {
     resultText.innerText = '___';
     gameOver.classList.add('hidden');
     computerSelectionText.classList.add('hidden');
+    rock.addEventListener('click', positiveRockEvent);
+    paper.addEventListener('click', positivePaperEvent);
+    scissors.addEventListener('click', positiveScissorsEvent);
 }
 
 
