@@ -27,7 +27,7 @@ h1 {
 
 .best-of-input {
     width: 2.5rem;
-    border: rgb(255,181,43) solid 3px;
+    border: rgb(255, 181, 43) solid 3px;
     border-radius: 0.5rem;
     padding: 0.25rem;
 }
@@ -40,7 +40,7 @@ h1 {
 }
 
 .icon {
-    border: 5px rgb(255,181,43) solid;
+    border: 5px rgb(255, 181, 43) solid;
     border-radius: 1rem;
     padding: 1rem;
     font-size: 6rem;
@@ -49,6 +49,7 @@ h1 {
 
 .icon:hover {
     transform: scale(1.1);
+    color: rgb(255, 181, 43);
 }
 
 .images {
@@ -90,7 +91,7 @@ h1 {
     align-items: center;
     margin-top: 2rem;
     cursor: pointer;
-    border: 5px rgb(255,181,43) solid;
+    border: 5px rgb(255, 181, 43) solid;
     border-radius: 1rem;
     padding: 1rem;
 }

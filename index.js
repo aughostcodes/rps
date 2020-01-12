@@ -17,18 +17,26 @@ let tieCounter = document.querySelector('.tie-counter');
 let gameOver = document.querySelector('.game-over');
 let finalResult = document.querySelector('.final-result');
 
+window.onload = checkForOdd();
 
 bestOfInput.addEventListener('change', function () {
-    if (bestOfInput.value % 2 === 0) {
-        console.log('Please select an odd number for the game.')
-    }
+    checkForOdd();
 });
 
-rock.addEventListener('click', positiveRockEvent);
-paper.addEventListener('click', positivePaperEvent);
-scissors.addEventListener('click', positiveScissorsEvent);
+function checkForOdd() {
+    if (Number(bestOfInput.value) % 2 !== 0) {
+        rock.addEventListener('click', rockEvent);
+        paper.addEventListener('click', paperEvent);
+        scissors.addEventListener('click', scissorsEvent);
+    } else if (Number(bestOfInput.value) % 2 === 0) {
+        console.log('Please select an odd number to play.');
+        rock.removeEventListener('click', rockEvent);
+        paper.removeEventListener('click', paperEvent);
+        scissors.removeEventListener('click', scissorsEvent);
+    }
+};
 
-function positiveRockEvent() {
+function rockEvent() {
     playerChoiceSpan.innerText = 'rock';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
@@ -36,7 +44,7 @@ function positiveRockEvent() {
     gameIsOver();
 };
 
-function positivePaperEvent() {
+function paperEvent() {
     playerChoiceSpan.innerText = 'paper';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
@@ -44,7 +52,7 @@ function positivePaperEvent() {
     gameIsOver();
 };
 
-function positiveScissorsEvent() {
+function scissorsEvent() {
     playerChoiceSpan.innerText = 'scissors';
     computerChoiceSpan.innerText = options[computerSelection()];
     computerSelectionText.classList.remove('hidden');
@@ -54,7 +62,7 @@ function positiveScissorsEvent() {
 
 function computerSelection() {
     return Math.floor(Math.random() * 3);
-}
+};
 
 function determineWinner() {
     if (playerChoiceSpan.innerText === 'rock' && computerChoiceSpan.innerText === 'paper') {
@@ -73,7 +81,7 @@ function determineWinner() {
         resultText.innerText = 'tied';
     }
     countRounds();
-}
+};
 
 function countRounds() {
     if (resultText.innerText === 'won') {
@@ -83,7 +91,7 @@ function countRounds() {
     } else {
         tieCounter.innerText = Number(tieCounter.innerText) + 1;
     }
-}
+};
 
 function gameIsOver() {
     if (Number(playerWinCounter.innerText) === Math.ceil(Number(bestOfInput.value) / 2) || Number(computerWinCounter.innerText) === Math.ceil(Number(bestOfInput.value) / 2)) {
@@ -96,11 +104,11 @@ function gameIsOver() {
         gameOver.addEventListener('click', function () {
             reset();
         })
-        rock.removeEventListener('click', positiveRockEvent);
-        paper.removeEventListener('click', positivePaperEvent);
-        scissors.removeEventListener('click', positiveScissorsEvent);
+        rock.removeEventListener('click', rockEvent);
+        paper.removeEventListener('click', paperEvent);
+        scissors.removeEventListener('click', scissorsEvent);
     }
-}
+};
 
 function reset() {
     playerWinCounter.innerText = 0;
@@ -110,11 +118,11 @@ function reset() {
     resultText.innerText = '___';
     gameOver.classList.add('hidden');
     computerSelectionText.classList.add('hidden');
-    rock.addEventListener('click', positiveRockEvent);
-    paper.addEventListener('click', positivePaperEvent);
-    scissors.addEventListener('click', positiveScissorsEvent);
-}
-
+    rock.addEventListener('click', rockEvent);
+    paper.addEventListener('click', paperEvent);
+    scissors.addEventListener('click', scissorsEvent);
+    checkForOdd();
+};
 
 
 
