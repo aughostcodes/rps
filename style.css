@@ -38,7 +38,7 @@ h1 {
 }
 
 .icon {
-    border: 5px black solid;
+    border: 5px rgb(255,181,43) solid;
     border-radius: 1rem;
     padding: 1rem;
     font-size: 6rem;
