@@ -1,6 +1,7 @@
+'use strict';
+
 // ROCK, PAPER, SCISSORS PROJECT
 
-// all the variables
 let options = ['rock', 'paper', 'scissors'];
 let rock = document.querySelector('.rock');
 let paper = document.querySelector('.paper');
@@ -17,15 +18,12 @@ let gameOver = document.querySelector('.game-over');
 let finalResult = document.querySelector('.final-result');
 
 
-
-
 bestOfInput.addEventListener('change', function () {
     if (bestOfInput.value % 2 === 0) {
         console.log('Please select an odd number for the game.')
     }
 });
 
-// listeners for image click/selection
 rock.addEventListener('click', function () {
     playerChoiceSpan.innerText = 'rock';
     computerChoiceSpan.innerText = options[computerSelection()];
@@ -50,7 +48,6 @@ scissors.addEventListener('click', function () {
     gameIsOver();
 });
 
-// logic stuff
 function computerSelection() {
     return Math.floor(Math.random() * 3);
 }
