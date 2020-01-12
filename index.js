@@ -7,6 +7,7 @@ let rock = document.querySelector('.rock');
 let paper = document.querySelector('.paper');
 let scissors = document.querySelector('.scissors');
 let bestOfInput = document.querySelector('.best-of-input');
+let evenWarning = document.querySelector('.warning');
 let playerChoiceSpan = document.querySelector('.player-choice');
 let computerSelectionText = document.querySelector('.computer-selection');
 let computerChoiceSpan = document.querySelector('.computer-choice');
@@ -25,11 +26,12 @@ bestOfInput.addEventListener('change', function () {
 
 function checkForOdd() {
     if (Number(bestOfInput.value) % 2 !== 0) {
+        evenWarning.classList.remove('even-warning');
         rock.addEventListener('click', rockEvent);
         paper.addEventListener('click', paperEvent);
         scissors.addEventListener('click', scissorsEvent);
     } else if (Number(bestOfInput.value) % 2 === 0) {
-        console.log('Please select an odd number to play.');
+        evenWarning.classList.add('even-warning');
         rock.removeEventListener('click', rockEvent);
         paper.removeEventListener('click', paperEvent);
         scissors.removeEventListener('click', scissorsEvent);

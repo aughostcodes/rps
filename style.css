@@ -32,6 +32,12 @@ h1 {
     padding: 0.25rem;
 }
 
+.even-warning {
+    color: rgb(255, 0, 0);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
 .images {
     display: flex;
     width: 50vw;
