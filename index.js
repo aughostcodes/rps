@@ -92,7 +92,20 @@ function gameIsOver() {
             finalResult.innerText = 'lost. Try again';
         }
         gameOver.classList.remove('hidden');
+        gameOver.addEventListener('click', function (){
+            reset();
+        })
     }
+}
+
+function reset() {
+    playerWinCounter.innerText = 0;
+    computerWinCounter.innerText = 0;
+    tieCounter.innerText = 0;
+    playerChoiceSpan.innerText = '___';
+    resultText.innerText = '___';
+    gameOver.classList.add('hidden');
+    computerSelectionText.classList.add('hidden');
 }
 
 
